@@ -23,50 +23,127 @@ describe "#translate" do
 
   it "translates a word beginning with a vowel" do
     s = translate("apple")
-    s.should == "appleay"
+    expect(s).to be == "appleay"
   end
 
   it "translates a word beginning with a consonant" do
     s = translate("banana")
-    s.should == "ananabay"
+    expect(s).to be == "ananabay"
   end
 
   it "translates a word beginning with two consonants" do
     s = translate("cherry")
-    s.should == "errychay"
-  end
+    expect(s).to be == "errychay"
+ end
 
   it "translates two words" do
     s = translate("eat pie")
-    s.should == "eatay iepay"
+    expect(s).to be == "eatay iepay"
   end
 
   it "translates a word beginning with three consonants" do
-    translate("three").should == "eethray"
+    expect(translate("three")).to be == "eethray"
   end
 
   it "counts 'sch' as a single phoneme" do
     s = translate("school")
-    s.should == "oolschay"
+    expect(s).to be == "oolschay"
   end
 
   it "counts 'qu' as a single phoneme" do
     s = translate("quiet")
-    s.should == "ietquay"
+    expect(s).to be == "ietquay"
   end
 
   it "counts 'qu' as a consonant even when it's preceded by a consonant" do
     s = translate("square")
-    s.should == "aresquay"
+    expect(s).to be == "aresquay"
   end
 
   it "translates many words" do
     s = translate("the quick brown fox")
-    s.should == "ethay ickquay ownbray oxfay"
+    expect(s).to be == "ethay ickquay ownbray oxfay"
   end
 
   # Test-driving bonus:
   # * write a test asserting that capitalized words are still capitalized (but with a different initial capital letter, of course)
+
+  it "maintains proper capitalization if original word are capitalized" do
+    s = translate("Lamb")
+    expect(s).to be == "Amblay"
+  end
+
+  it "maintains proper capitalization if all original words are capitalized" do
+    s = translate("The Quick Brown Fox")
+    expect(s).to be == "Ethay Ickquay Ownbray Oxfay"
+  end
+
+  it "maintains proper capitalization if many original words are capitalized" do
+    s = translate("The quick Brown fox")
+    expect(s).to be == "Ethay ickquay Ownbray oxfay"
+  end
+
   # * retain the punctuation from the original phrase
 
+  it "maintains the punctuation." do
+    pending("Probably need to start thinking about using regex")
+    s = translate("The, quick brown. Fox")
+    expect(s).to be == "Ethay, ickquay ownbray. Oxfay"
+  end
+
 end
+
+
+# require "pig_latin"
+#
+# describe "#translate" do
+#
+#   it "translates a word beginning with a vowel" do
+#     s = translate("apple")
+#     expect(s).to be == "appleay"
+#   end
+#
+#   it "translates a word beginning with a consonant" do
+#     s = translate("banana")
+#     s.should == "ananabay"
+#   end
+#
+#   it "translates a word beginning with two consonants" do
+#     s = translate("cherry")
+#     s.should == "errychay"
+#   end
+#
+#   it "translates two words" do
+#     s = translate("eat pie")
+#     s.should == "eatay iepay"
+#   end
+#
+#   it "translates a word beginning with three consonants" do
+#     translate("three").should == "eethray"
+#   end
+#
+#   it "counts 'sch' as a single phoneme" do
+#     s = translate("school")
+#     s.should == "oolschay"
+#   end
+#
+#   it "counts 'qu' as a single phoneme" do
+#     s = translate("quiet")
+#     s.should == "ietquay"
+#   end
+#
+#   it "counts 'qu' as a consonant even when it's preceded by a consonant" do
+#     s = translate("square")
+#     s.should == "aresquay"
+#   end
+#
+#   it "translates many words" do
+#     s = translate("the quick brown fox")
+#     s.should == "ethay ickquay ownbray oxfay"
+#   end
+#
+#   # Test-driving bonus:
+#   # * write a test asserting that capitalized words are still capitalized (but with a different initial capital letter, of course)
+#   # * retain the punctuation from the original phrase
+#
+# end
