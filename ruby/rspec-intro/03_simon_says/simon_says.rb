@@ -19,7 +19,13 @@ def first_word(string)
 end
 
 def titleize(string)
-  littlewords = %w { the and }
-  # string.split(" ").map { |word| word.capitalize }.join(" ")
-  # Need to make not capitalize "little words"
+  titlewords = string.split.map do |word|
+    if %w(the and over).include?(word)
+      word
+    else
+      word.capitalize
+    end
+  end
+  titlewords.first.capitalize!
+  titlewords.join(" ")
 end
