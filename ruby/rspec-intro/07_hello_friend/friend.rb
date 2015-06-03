@@ -6,6 +6,8 @@ class Friend
     else
       "Hello!"
     end
+    # Below is ternary example, which also works:
+    # name ? "Hello, #{name}!" : "Hello!"
   end
 
 end
