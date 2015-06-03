@@ -37,7 +37,10 @@ describe "some silly block functions" do
       repeater do
         block_was_executed = true
       end
-      block_was_executed.should == true
+      expect(block_was_executed).to eq(true)
+      # Changed to ^^: block_was_executed.should == true
+      # Not sure if correct or not
+      # Not sure how repeater method is supposed to work
     end
 
     it "executes the default block 3 times" do

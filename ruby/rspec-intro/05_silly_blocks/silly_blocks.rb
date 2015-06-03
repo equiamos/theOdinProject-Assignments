@@ -1,16 +1,16 @@
 def reverser(string)
-#  array = string.split(" ")
-#  array.map { |word| word.reverse! }*" "
-  #*" " converts back to string
-
   string.gsub(/\S+/, &:reverse)
-  # Appears to work same as above code
+
+  #  Below also works:
+  #  array = string.split(" ")
+  #  array.map { |word| word.reverse! }*" "
+    ## *" " converts back to string
 end
 
 def adder(x, add=1)
   x + add
 end
 
-def repeater(num=nil)
-
+def repeater
+  # Not sure how this is supposed to work
 end
