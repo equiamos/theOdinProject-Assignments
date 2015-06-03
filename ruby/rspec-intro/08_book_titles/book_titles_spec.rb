@@ -22,44 +22,53 @@ describe Book do
 
   describe 'title' do
     it 'should capitalize the first letter' do
-      expect(@book.title("inferno")).to eq("Inferno")
+      @book.title = "inferno"
+      expect(@book.title).to eq("Inferno")
     end
 
     it 'should capitalize every word' do
-      expect(@book.title("stuart little")).to eq("Stuart Little")
+      @book.title = "stuart little"
+      expect(@book.title).to eq("Stuart Little")
     end
 
     describe 'should capitalize every word except...' do
       describe 'articles' do
         specify 'the' do
-          expect(@book.title("alexander the great")).to eq("Alexander the Great")
+          @book.title = "alexander the great"
+          expect(@book.title).to eq("Alexander the Great")
         end
 
         specify 'a' do
-          expect(@book.title("to kill a mockingbird")).to eq("To Kill a Mockingbird")
+          @book.title = "to kill a mockingbird"
+          expect(@book.title).to eq("To Kill a Mockingbird")
         end
 
         specify 'an' do
-          expect(@book.title("to eat an apple a day")).to eq("To Eat an Apple a Day")
+          @book.title = "to eat an apple a day"
+          expect(@book.title).to eq("To Eat an Apple a Day")
         end
       end
 
       specify 'conjunctions' do
-        expect(@book.title("war and peace")).to eq("War and Peace")
+        @book.title = "war and peace"
+        expect(@book.title).to eq("War and Peace")
       end
 
       specify 'prepositions' do
-        expect(@book.title("love in the time of cholera")).to eq("Love in the Time of Cholera")
+        @book.title = "love in the time of cholera"
+        expect(@book.title).to eq("Love in the Time of Cholera")
       end
     end
 
     describe 'should always capitalize...' do
       specify 'I' do
-        expect(@book.title("what i wish i knew when i was 20")).to eq("What I Wish I Knew When I Was 20")
+        @book.title = "what i wish i knew when i was 20"
+        expect(@book.title).to eq("What I Wish I Knew When I Was 20")
       end
 
       specify 'the first word' do
-        expect(@book.title("the man in the iron mask")).to eq("The Man in the Iron Mask")
+        @book.title = "the man in the iron mask"
+        expect(@book.title).to eq("The Man in the Iron Mask")
       end
     end
   end
