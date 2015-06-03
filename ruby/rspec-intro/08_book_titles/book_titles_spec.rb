@@ -22,53 +22,44 @@ describe Book do
 
   describe 'title' do
     it 'should capitalize the first letter' do
-      @book.title = "inferno"
-      @book.title.should == "Inferno"
+      expect(@book.title("inferno")).to eq("Inferno")
     end
 
     it 'should capitalize every word' do
-      @book.title = "stuart little"
-      @book.title.should == "Stuart Little"
+      expect(@book.title("stuart little")).to eq("Stuart Little")
     end
 
     describe 'should capitalize every word except...' do
       describe 'articles' do
         specify 'the' do
-          @book.title = "alexander the great"
-          @book.title.should == "Alexander the Great"
+          expect(@book.title("alexander the great")).to eq("Alexander the Great")
         end
 
         specify 'a' do
-          @book.title = "to kill a mockingbird"
-          @book.title.should == "To Kill a Mockingbird"
+          expect(@book.title("to kill a mockingbird")).to eq("To Kill a Mockingbird")
         end
 
         specify 'an' do
-          @book.title = "to eat an apple a day"
-          @book.title.should == "To Eat an Apple a Day"
+          expect(@book.title("to eat an apple a day")).to eq("To Eat an Apple a Day")
         end
       end
 
       specify 'conjunctions' do
-        @book.title = "war and peace"
-        @book.title.should == "War and Peace"
+        expect(@book.title("war and peace")).to eq("War and Peace")
       end
 
       specify 'prepositions' do
-        @book.title = "love in the time of cholera"
-        @book.title.should == "Love in the Time of Cholera"
+        expect(@book.title("love in the time of cholera")).to eq("Love in the Time of Cholera")
       end
     end
 
     describe 'should always capitalize...' do
       specify 'I' do
-        @book.title = "what i wish i knew when i was 20"
-        @book.title.should == "What I Wish I Knew When I Was 20"
+        expect(@book.title("what i wish i knew when i was 20")).to eq("What I Wish I Knew When I Was 20")
       end
 
       specify 'the first word' do
-        @book.title = "the man in the iron mask"
-        @book.title.should == "The Man in the Iron Mask"
+        expect(@book.title("the man in the iron mask")).to eq("The Man in the Iron Mask")
       end
     end
   end
