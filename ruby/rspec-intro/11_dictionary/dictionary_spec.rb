@@ -17,6 +17,12 @@ describe Dictionary do
     expect(@d.entries).to be == {}
   end
 
+    it 'add keywords (without definition)' do
+      @d.add(:fish)
+      expect(@d.entries).to be == {fish: nil}
+      expect(@d.keywords).to be == [:fish]
+    end
+
   it 'can add whole entries with keyword and definition' do
     #@d.add('fish' => 'aquatic animal')
     @d.add(:fish, 'aquatic animal')
@@ -24,11 +30,6 @@ describe Dictionary do
     expect(@d.keywords).to be == [:fish]
   end
 
-  it 'add keywords (without definition)' do
-    @d.add('fish')
-    expect(@d.entries).to be == {'fish' => nil}
-    expect(@d.keywords).to be == ['fish']
-  end
 
   it 'can check whether a given keyword exists' do
     expect(@d.include?('fish')).to be false
