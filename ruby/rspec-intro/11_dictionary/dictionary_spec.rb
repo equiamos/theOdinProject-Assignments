@@ -32,18 +32,18 @@ describe Dictionary do
 
 
   it 'can check whether a given keyword exists' do
-    expect(@d.include?('fish')).to be false
+    expect(@d.include?(:fish)).to be false
   end
 
   it "doesn't cheat when checking whether a given keyword exists" do
-    expect(@d.include?('fish')).to be false # if the method is empty, this test passes with nil returned
-    @d.add('fish')
-    expect(@d.include?('fish')).to be true # confirms that it actually checks
-    expect(@d.include?('bird')).to be false # confirms not always returning true after add
+    expect(@d.include?(:fish)).to be false # if the method is empty, this test passes with nil returned
+    @d.add(:fish)
+    expect(@d.include?(:fish)).to be true # confirms that it actually checks
+    expect(@d.include?(:bird)).to be false # confirms not always returning true after add
   end
 
   it "doesn't include a prefix that wasn't added as a word in and of itself" do
-    @d.add('fish')
+    @d.add(:fish)
     expect(@d.include?('fi')).to be false
   end
 
@@ -52,8 +52,8 @@ describe Dictionary do
   end
 
   it 'finds nothing if the prefix matches nothing' do
-    @d.add('fiend')
-    @d.add('great')
+    @d.add(:fiend)
+    @d.add(:great)
     @d.find('nothing').empty?
   end
 
