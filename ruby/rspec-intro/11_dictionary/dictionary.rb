@@ -26,26 +26,13 @@ class Dictionary
     word_matches = {}
     entries.each_pair do |key, value|
       if key =~ /\A#{partial_word}/
+        # Could also use ^ instead of "\A"
         word_matches[key] = value
       end
-      word_matches
     end
-
-
+        word_matches
   end
-
 end
-
-
-
-
-
-
-
-
-
-
-
 
 
 
